@@ -1,7 +1,6 @@
 //https://leetcode-cn.com/problems/add-two-numbers/
 
 import ListNode from '../model/ListNode'
-import { buildLinkedList } from '../util/buildLinkedList'
 
 export function addTwoNumbers(
   l1: ListNode | null,
@@ -13,8 +12,8 @@ export function addTwoNumbers(
 
   let cur1: ListNode | null = l1
   let cur2: ListNode | null = l2
-  let resullt = new ListNode(Infinity, null)
-  let curR = resullt
+  let result = new ListNode(Infinity, null)
+  let curR = result
 
   let takeOver = 0
   while (cur1 || cur2) {
@@ -34,9 +33,5 @@ export function addTwoNumbers(
 
   if (takeOver) curR.next = new ListNode(1, null)
 
-  return resullt.next
+  return result.next
 }
-
-console.log([
-  ...addTwoNumbers(buildLinkedList([9, 9, 9]), buildLinkedList([9, 9]))!,
-])
