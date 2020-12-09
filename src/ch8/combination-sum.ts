@@ -1,6 +1,6 @@
-//https://leetcode-cn.com/problems/combination-sum-ii/
+//https://leetcode-cn.com/problems/combination-sum/
 
-export function combinationSum2(
+export function combinationSum(
   candidates: number[],
   target: number
 ): number[][] {
@@ -15,12 +15,12 @@ export function combinationSum2(
 
     for (let i = begin; i < candidates.length; ++i) {
       const cur = target - candidates[i]
-      if (cur < 0) break
 
-      if (i > begin && candidates[i] === candidates[i - 1]) continue
-      path.push(candidates[i])
-      core(i + 1, cur, path)
-      path.pop()
+      if (cur >= 0) {
+        path.push(candidates[i])
+        core(i, cur, path)
+        path.pop()
+      } else break
     }
   }
 
@@ -28,6 +28,3 @@ export function combinationSum2(
 
   return result
 }
-
-debugger
-console.log(combinationSum2([2, 5, 2, 1, 2], 5))
